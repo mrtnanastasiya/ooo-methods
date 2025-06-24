@@ -1,0 +1,41 @@
+{
+  "name": "oop-classes",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Martirosyan Anastasiya",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage",
+    "start": "webpack serve --mode development",
+    "build": "webpack --mode production",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.27.2",
+    "@babel/core": "^7.27.4",
+    "@babel/plugin-transform-private-methods": "^7.27.1",
+    "@babel/preset-env": "^7.27.2",
+    "@eslint/js": "^9.29.0",
+    "babel-loader": "^10.0.0",
+    "css-loader": "^7.1.2",
+    "css-minimizer-webpack-plugin": "^7.0.2",
+    "eslint": "^9.29.0",
+    "eslint-plugin-import": "^2.32.0",
+    "globals": "^16.2.0",
+    "html-loader": "^5.1.0",
+    "html-webpack-plugin": "^5.6.3",
+    "jest": "^30.0.2",
+    "jest-babel": "^1.0.1",
+    "style-loader": "^4.0.0",
+    "typescript-eslint": "^8.34.1",
+    "webpack": "^5.99.9",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2"
+  },
+  "dependencies": {
+    "core-js": "^3.43.0",
+    "eslint-plugin-jest": "^29.0.1"
+  }
+}
