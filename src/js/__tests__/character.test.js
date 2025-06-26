@@ -7,4 +7,5 @@ describe('Character', () => {
         new Character('Name', 'Type');
     }).toThrow('Нельзя создать экземпляр абстрактного класса');
     });
+
 });

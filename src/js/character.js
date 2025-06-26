@@ -1,6 +1,6 @@
 
 export default class Character {
-    constructor(name, type, health = 100, level = 1, attack, defence) {
+    constructor(name, type, health, level = 1, attack, defence) {
         if (new.target === Character) {
             throw new Error('Нельзя создать экземпляр абстрактного класса');
         }
@@ -15,4 +15,44 @@ export default class Character {
         this.attack = attack;
         this.defence = defence;
     }
+    
+    levelUp() {
+        if (this.health === 0) {
+            throw new Error('Нельзя повысить уровень умершего персонажа');
+        }
+
+        this.level++;
+
+        this.attack += Math.round(this.attack * 0.2);
+        this.defence += Math.round(this.defence * 0.2);
+
+        this.health = 100;
+
+        return {
+            name: this.name,
+            type: this.type,
+            health: this.health,
+            level: this.level,
+            attack: this.attack,
+            defence: this.defence
+        };
+    }
+
+    damage(points) {
+        if (this.health > 0) {
+            this.health -= points * (1 - this.defence / 100);
+            if (this.health < 0) {
+                this.health = 0;
+            }
+        }
+         return {
+            name: this.name,
+            type: this.type,
+            health: this.health,
+            level: this.level,
+            attack: this.attack,
+            defence: this.defence
+        };
+    }
 }
+
