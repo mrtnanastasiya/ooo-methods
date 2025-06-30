@@ -1,20 +1,35 @@
 
 export default class Character {
-    constructor(name, type, health, level = 1, attack, defence) {
-        if (new.target === Character) {
-            throw new Error('Нельзя создать экземпляр абстрактного класса');
+    constructor(name, type) {
+        const types = [
+            "Bowman",
+            "Swordsman",
+            "Magician",
+            "Daemon",
+            "Undead",
+            "Zombie",
+        ];
+
+        if (!types.includes(type)) {
+            throw new Error(
+                `Тип должен быть одним из перечисленных: ${types.join(", ")}`
+            );
         }
+
         if (typeof name !== 'string' || name.length < 2 || name.length > 10) {
             throw new Error('Имя должно быть строкой длиной от 2 до 10 символов');
         }
 
         this.name = name;
         this.type = type;
-        this.health = health;
-        this.level = level;
-        this.attack = attack;
-        this.defence = defence;
+
+        this.health = undefined;
+        this.level = 1;
+
+        this.attack = undefined;
+        this.defence = undefined;
     }
+
     
     levelUp() {
         if (this.health === 0) {
@@ -28,14 +43,14 @@ export default class Character {
 
         this.health = 100;
 
-        return {
-            name: this.name,
-            type: this.type,
-            health: this.health,
-            level: this.level,
-            attack: this.attack,
-            defence: this.defence
-        };
+        // return {
+        //     name: this.name,
+        //     type: this.type,
+        //     health: this.health,
+        //     level: this.level,
+        //     attack: this.attack,
+        //     defence: this.defence
+        // };
     }
 
     damage(points) {
@@ -45,14 +60,14 @@ export default class Character {
                 this.health = 0;
             }
         }
-         return {
-            name: this.name,
-            type: this.type,
-            health: this.health,
-            level: this.level,
-            attack: this.attack,
-            defence: this.defence
-        };
+         // return {
+        //     name: this.name,
+        //     type: this.type,
+        //     health: this.health,
+        //     level: this.level,
+        //     attack: this.attack,
+        //     defence: this.defence
+        // };
     }
-}
 
+}

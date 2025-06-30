@@ -30,21 +30,27 @@ const zombie = new Zombie('Frank', 'Zombie');
 const zombieLevelUp = zombie.levelUp();
 const zombieDamage = zombie.damage(20);
 
-console.log(bowmanLevelUp);
-console.log(bowmanDamage);
+console.log(bowman);
+//console.log(bowmanLevelUp);
+//console.log(bowmanDamage);
 
-console.log(swordsmanLevelUp);
-console.log(swordsmanDamage);
+console.log(swordsman);
+//console.log(swordsmanLevelUp);
+//console.log(swordsmanDamage);
 
-console.log(magicianLevelUp);
-console.log(magicianDamage);
+console.log(magician);
+//console.log(magicianLevelUp);
+//console.log(magicianDamage);
 
-console.log(daemonLevelUp);
-console.log(daemonDamage);
+console.log(daemon);
+//console.log(daemonLevelUp);
+//console.log(daemonDamage);
 
-console.log(undeadLevelUp);
-console.log(undeadDamage);
+console.log(undead);
+//console.log(undeadLevelUp);
+//console.log(undeadDamage);
 
-console.log(zombieLevelUp);
-console.log(zombieDamage);
+console.log(zombie);
+//console.log(zombieLevelUp);
+//console.log(zombieDamage);
 
