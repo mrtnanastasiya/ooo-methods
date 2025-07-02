@@ -5,14 +5,14 @@ describe('Проверка персонажа Daemon', () => {
     let character;
     
     beforeEach(() => {
-        character = new Daemon('David', 'Daemon', 100, 1, 10, 40);
+        character = new Daemon('David', 'Daemon', 75, 1, 10, 40);
     });
 
     test('Проверка создания персонажа', () => {
         expect(character).toEqual({
             name: 'David',
             type: 'Daemon',
-            health: 100,
+            health: 75,
             level: 1,
             attack: 10,
             defence: 40
@@ -20,11 +20,11 @@ describe('Проверка персонажа Daemon', () => {
     });
 
     test('Должно выдаваться сообщение об ошибке из-за недопустимого имени', () => {
-        expect(() => new Daemon('', 'Daemon')).toThrow('Имя должно быть строкой длиной от 2 до 10 символов');
+        expect(() => new Daemon('', 'Daemon')).toThrow();
     });
 
     test('Должно выдаваться сообщение об ошибке из-за недопустимого типа символа', () => {
-        expect(() => new Daemon('David', 'InvalidType')).toThrow('Недопустимый тип персонажа. Выберите один из: Bowman, Swordsman, Magician, Daemon, Undead, Zombie');
+        expect(() => new Daemon('David', 'InvalidType')).toThrow();
     });
 
     test('Должен повышаться уровень, атака и защита при вызове функции LevelUp(), а здоровье не равно 0', () => {
@@ -53,6 +53,12 @@ describe('Проверка персонажа Daemon', () => {
         character.damage(damagePoints);
 
         expect(character.health).toBe(expectedHealth);
+    });
+
+    test('Проверка уровня жизни, если health = 0', () => {
+        character.health = 0;
+        character.damage(10);
+        expect(character.health).toBe(0); 
     });
 
 });

@@ -56,10 +56,10 @@ export default class Character {
     damage(points) {
         if (this.health > 0) {
             this.health -= points * (1 - this.defence / 100);
-            if (this.health < 0) {
-                this.health = 0;
-            }
+        } else {
+            this.health = 0
         }
+    }
          // return {
         //     name: this.name,
         //     type: this.type,
@@ -68,6 +68,4 @@ export default class Character {
         //     attack: this.attack,
         //     defence: this.defence
         // };
-    }
-
 }

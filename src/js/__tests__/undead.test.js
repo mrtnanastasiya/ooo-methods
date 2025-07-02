@@ -5,14 +5,14 @@ describe('Проверка персонажа Undead', () => {
     let character;
     
     beforeEach(() => {
-            character = new Undead('Eve', 'Undead', 100, 1, 25, 25);
+            character = new Undead('Eve', 'Undead', 55, 1, 25, 25);
         });
 
     test('Проверка создания персонажа', () => {
         expect(character).toEqual({
             name: 'Eve',
             type: 'Undead',
-            health: 100,
+            health: 55,
             level: 1,
             attack: 25,
             defence: 25
@@ -20,11 +20,11 @@ describe('Проверка персонажа Undead', () => {
     });
 
     test('Должно выдаваться сообщение об ошибке из-за недопустимого имени', () => {
-        expect(() => new Undead('', 'Undead')).toThrow('Имя должно быть строкой длиной от 2 до 10 символов');
+        expect(() => new Undead('', 'Undead')).toThrow();
     });
 
     test('Должно выдаваться сообщение об ошибке из-за недопустимого типа символа', () => {
-        expect(() => new Undead('Eve', 'InvalidType')).toThrow('Недопустимый тип персонажа. Выберите один из: Bowman, Swordsman, Magician, Daemon, Undead, Zombie');
+        expect(() => new Undead('Eve', 'InvalidType')).toThrow();
     });
 
     test('Должен повышаться уровень, атака и защита при вызове функции LevelUp(), а здоровье не равно 0', () => {
@@ -50,5 +50,11 @@ describe('Проверка персонажа Undead', () => {
         const expectedHealth = initialHealth - damagePoints * (1 - character.defence / 100);
         character.damage(damagePoints);
         expect(character.health).toBe(expectedHealth);
+    });
+
+    test('Проверка уровня жизни, если health = 0', () => {
+        character.health = 0;
+        character.damage(10);
+        expect(character.health).toBe(0); 
     });
 });

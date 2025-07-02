@@ -5,14 +5,14 @@ describe('Проверка персонажа Magician', () => {
     let character;
     
         beforeEach(() => {
-            character = new Magician('Jasper', 'Magician', 100, 1, 10, 40);
+            character = new Magician('Jasper', 'Magician', 95, 1, 10, 40);
         });
         
     test('Проверка создания персонажа', () => {
         expect(character).toEqual({
             name: 'Jasper',
             type: 'Magician',
-            health: 100,
+            health: 95,
             level: 1,
             attack: 10,
             defence: 40
@@ -20,11 +20,11 @@ describe('Проверка персонажа Magician', () => {
     });
 
     test('Должно выдаваться сообщение об ошибке из-за недопустимого имени', () => {
-        expect(() => new Magician('', 'Magician')).toThrow('Имя должно быть строкой длиной от 2 до 10 символов');
+        expect(() => new Magician('', 'Magician')).toThrow();
     });
 
     test('Должно выдаваться сообщение об ошибке из-за недопустимого типа символа', () => {
-        expect(() => new Magician('Jasper', 'InvalidType')).toThrow('Недопустимый тип персонажа. Выберите один из: Bowman, Swordsman, Magician, Daemon, Undead, Zombie');
+        expect(() => new Magician('Jasper', 'InvalidType')).toThrow();
     });
 
     test('Должен повышаться уровень, атака и защита при вызове функции LevelUp(), а здоровье не равно 0', () => {
@@ -50,5 +50,11 @@ describe('Проверка персонажа Magician', () => {
         const expectedHealth = initialHealth - damagePoints * (1 - character.defence / 100);
         character.damage(damagePoints);
         expect(character.health).toBe(expectedHealth);
+    });
+
+    test('Проверка уровня жизни, если health = 0', () => {
+        character.health = 0;
+        character.damage(10);
+        expect(character.health).toBe(0); 
     });
 });

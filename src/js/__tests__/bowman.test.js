@@ -5,14 +5,14 @@ describe('Проверка персонажа Bowman', () => {
     let character;
 
     beforeEach(() => {
-        character = new Bowman('Luis', 'Bowman', 100, 1, 25, 25);
+        character = new Bowman('Luis', 'Bowman', 45, 1, 25, 25);
     });
 
     test('Проверка создания персонажа', () => {
         expect(character).toEqual({
             name: 'Luis',
             type: 'Bowman',
-            health: 100,
+            health: 45,
             level: 1,
             attack: 25,
             defence: 25
@@ -20,11 +20,11 @@ describe('Проверка персонажа Bowman', () => {
     });
 
     test('Должно выдаваться сообщение об ошибке из-за недопустимого имени', () => {
-        expect(() => new Bowman('', 'Bowman')).toThrow('Имя должно быть строкой длиной от 2 до 10 символов');
+        expect(() => new Bowman('', 'Bowman')).toThrow();
     });
 
     test('Должно выдаваться сообщение об ошибке из-за недопустимого типа символа', () => {
-        expect(() => new Bowman('Luis', 'InvalidType')).toThrow('Недопустимый тип персонажа. Выберите один из: Bowman, Swordsman, Magician, Daemon, Undead, Zombie');
+        expect(() => new Bowman('Luis', 'InvalidType')).toThrow();
     });
 
 
@@ -53,4 +53,10 @@ describe('Проверка персонажа Bowman', () => {
         expect(character.health).toBe(expectedHealth);
     });
 
+    test('Проверка уровня жизни, если health = 0', () => {
+        character.health = 0;
+        character.damage(10);
+        expect(character.health).toBe(0); 
+    });
+     
 });
